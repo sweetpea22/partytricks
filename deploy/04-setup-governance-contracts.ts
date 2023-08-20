@@ -1,7 +1,7 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types"
 import { DeployFunction } from "hardhat-deploy/types"
  
-import { ADDRESS_ZERO } from "../deploy-config"
+import {   ADDRESS_ZERO } from "../deploy-config"
 import { ethers } from "hardhat"
 
 const setupContracts: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
@@ -10,8 +10,8 @@ const setupContracts: DeployFunction = async function (hre: HardhatRuntimeEnviro
   const { log } = deployments
   const { deployer } = await getNamedAccounts()
    
-  const timeLock = await ethers.getContractAt("TimeLock", deployer)
-  const governor = await ethers.getContractAt("GovernorContract", deployer)
+  const timeLock = await ethers.getContract("TimeLock", deployer)
+  const governor = await ethers.getContract("GovernorContract", deployer)
 
   log("----------------------------------------------------")
   log("Setting up contracts for roles...")

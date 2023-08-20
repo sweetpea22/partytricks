@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract FundHoldingContract is Ownable {
+contract Escrow is Ownable {
     address public winner; // The address of the winner
     bool public winnerSelected; // Flag to indicate if the winner is selected
     uint256 public escrowAmount; // Total funds collected
@@ -25,6 +25,7 @@ contract FundHoldingContract is Ownable {
         require(!winnerSelected, "Winner has already been selected");
         escrowAmount += msg.value;
     }
+
     
     function selectWinner(address _winner) external onlyOwner notWinnerSelected {
         require(_winner != address(0), "Invalid winner address");
@@ -39,5 +40,10 @@ contract FundHoldingContract is Ownable {
         escrowAmount = 0; // Reset total funds after sending to the winner
         payable(winner).transfer(amountToSend);
 
-     }
+    }
+
+    function retrieve() public view returns (uint256) {
+        return escrowAmount;
+    }
 }
+

@@ -25,10 +25,11 @@ export const VOTING_PERIOD = 5 // blocks
 export const VOTING_DELAY = 1 // 1 Block - How many blocks till a proposal vote becomes active
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000"
 
-export const FUNC = "sendReward"
+export const FUNC = "selectWinner"
 
 //get these from UI instead
-export const NEW_STORE_VALUE = 77
+export const POTENTIAL_WINNER = "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720"
+
 export const PROPOSAL_DESCRIPTION = "Because I say so!"
 
 // if we use the script only
