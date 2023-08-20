@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract FundHoldingContrac is Ownable {
+contract FundHoldingContract is Ownable {
     address public winner; // The address of the winner
     bool public winnerSelected; // Flag to indicate if the winner is selected
     uint256 public escrowAmount; // Total funds collected
@@ -10,7 +10,6 @@ contract FundHoldingContrac is Ownable {
     constructor() {
         winnerSelected = false;
     }
-    
     
     modifier onlyWinner() {
         require(msg.sender == winner, "Only the winner can call this function");
