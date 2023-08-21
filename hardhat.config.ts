@@ -9,7 +9,7 @@ import { HardhatUserConfig } from "hardhat/config"
 const SEPOLIA_RPC_URL =
   process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY"
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "privateKey"
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
+const AVALANCHE_TEST_PRIVATE_KEY = process.env.AVALANCHE_TEST_PRIVATE_KEY || "privateKey"
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -29,9 +29,9 @@ const config: HardhatUserConfig = {
      },
      avalancheTest: {
       url: 'https://api.avax-test.network/ext/bc/C/rpc',
+      accounts: [AVALANCHE_TEST_PRIVATE_KEY],
       gasPrice: 225000000000,
-      chainId: 43113,
-      accounts: [`0x${process.env.AVALANCHE_TEST_PRIVATE_KEY}`]
+      chainId: 43113
     },
   },
   solidity: {

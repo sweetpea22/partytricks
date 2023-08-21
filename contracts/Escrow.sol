@@ -9,7 +9,6 @@ contract Escrow is Ownable {
     uint256 public escrowAmount; // Total funds collected
     
     constructor() {
-        winners = _winners;
         winnerSelected = false;
         isSplit = false;
     }
@@ -26,6 +25,7 @@ contract Escrow is Ownable {
 
     function addWinner(address _newWinner) external onlyOwner {
         winners.push(_newWinner);
+        winnerSelected = true;
     }
 
     function releasePrize() external payable onlyOwner {
