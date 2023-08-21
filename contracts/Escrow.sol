@@ -3,17 +3,16 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Escrow is Ownable {
-    address public winner; // The address of the winner
+     address[] public winners;    // Array of winners
     bool public winnerSelected; // Flag to indicate if the winner is selected
+    bool public isSplit; // Flag to indicate if the winner is selected
     uint256 public escrowAmount; // Total funds collected
     
     constructor() {
+        winners = _winners;
         winnerSelected = false;
-    }
-    
-    modifier onlyWinner() {
-        require(msg.sender == winner, "Only the winner can call this function");
-        _;
+        isSplit = false;
+
     }
     
     modifier notWinnerSelected() {
@@ -26,24 +25,41 @@ contract Escrow is Ownable {
         escrowAmount += msg.value;
     }
 
-    
-    function selectWinner(address _winner) external onlyOwner notWinnerSelected {
-        require(_winner != address(0), "Invalid winner address");
-        winner = _winner;
-        winnerSelected = true;
+    function addWinner(address _newWinner) external onlyOwner {
+        winners.push(_newWinner);
     }
-    
-    function releaseToWinner() external onlyWinner {
-        require(winnerSelected, "Winner has not been selected yet");
-        require(address(this).balance > 0, "No funds to withdraw");
-        uint256 amountToSend = escrowAmount;
-        escrowAmount = 0; // Reset total funds after sending to the winner
-        payable(winner).transfer(amountToSend);
 
+    function setSingleWinner(address _winner) external onlyOwner notWinnerSelected {
+        require(_winner != address(0), "Invalid winner address");
+        require(winners.length === 0, "No winners specified");
+        winnerSelected = true;
+        isSplit = false;
+    }
+
+    function setDoubleWinner(address _winner) external onlyOwner notWinnerSelected {
+        require(_winner != address(0), "Invalid winner address");
+        require(winners.length === 2, "No winners specified");
+        winnerSelected = true;
+        isSplit = true;
+    }
+
+  function releasePrize() external payable onlyOwner {
+        require(msg.value > 0, "No funds sent with the transaction");
+        require(winners.length > 0, "No winners specified");
+
+        uint256 amountToSend = msg.value;
+        if (winners.length == 2) {
+            amountToSend /= 2;
+        } 
+
+        for (uint256 i = 0; i < winners.length; i++) {
+            payable(winners[i]).transfer(amountToSend);
+        }
     }
 
     function retrieve() public view returns (uint256) {
         return escrowAmount;
     }
+
 }
 

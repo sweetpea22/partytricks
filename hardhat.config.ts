@@ -26,6 +26,12 @@ const config: HardhatUserConfig = {
       url: SEPOLIA_RPC_URL,
       accounts: [PRIVATE_KEY],
       chainId: 11155111,
+     },
+     avalancheTest: {
+      url: 'https://api.avax-test.network/ext/bc/C/rpc',
+      gasPrice: 225000000000,
+      chainId: 43113,
+      accounts: [`0x${process.env.AVALANCHE_TEST_PRIVATE_KEY}`]
     },
   },
   solidity: {
