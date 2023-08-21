@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Escrow is Ownable {
-     address[] public winners;    // Array of winners
+    address[] public winners;    // Array of winners
     bool public winnerSelected; // Flag to indicate if the winner is selected
     bool public isSplit; // Flag to indicate if the winner is selected
     uint256 public escrowAmount; // Total funds collected
@@ -12,7 +12,6 @@ contract Escrow is Ownable {
         winners = _winners;
         winnerSelected = false;
         isSplit = false;
-
     }
     
     modifier notWinnerSelected() {
@@ -29,21 +28,7 @@ contract Escrow is Ownable {
         winners.push(_newWinner);
     }
 
-    function setSingleWinner(address _winner) external onlyOwner notWinnerSelected {
-        require(_winner != address(0), "Invalid winner address");
-        require(winners.length === 0, "No winners specified");
-        winnerSelected = true;
-        isSplit = false;
-    }
-
-    function setDoubleWinner(address _winner) external onlyOwner notWinnerSelected {
-        require(_winner != address(0), "Invalid winner address");
-        require(winners.length === 2, "No winners specified");
-        winnerSelected = true;
-        isSplit = true;
-    }
-
-  function releasePrize() external payable onlyOwner {
+    function releasePrize() external payable onlyOwner {
         require(msg.value > 0, "No funds sent with the transaction");
         require(winners.length > 0, "No winners specified");
 
