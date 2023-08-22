@@ -5,7 +5,7 @@ import { infuraProvider } from '@wagmi/core/providers/infura'
 import { publicProvider } from 'wagmi/providers/public'
 
 const walletConnectProjectId = '';
-const INFURA_API_KEY = process.env.NEXT_PUBLIC_INFURA_API_KEY || "";
+const INFURA_API_KEY = process.env.NEXT_PUBLIC_INFURA_API_KEY || "e3663f0003d810dcbaf4851d2a9f2554";
 
 const { chains, publicClient } = configureChains(
 

@@ -33,7 +33,7 @@ const config: HardhatUserConfig = {
       chainId: 5,
      },
      avalancheTest: {
-      url: 'https://api.avax-test.network/ext/bc/C/rpc',
+      url: 'https://avalanche-fuji.infura.io/v3/',
       accounts: [AVALANCHE_TEST_PRIVATE_KEY],
       gasPrice: 225000000000,
       chainId: 43113

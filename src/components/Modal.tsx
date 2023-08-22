@@ -1,9 +1,28 @@
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { CheckIcon } from '@heroicons/react/24/outline';
+import { CheckIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
+
+<svg
+  xmlns='http://www.w3.org/2000/svg'
+  fill='none'
+  viewBox='0 0 24 24'
+  strokeWidth={1.5}
+  stroke='currentColor'
+  className='w-6 h-6'>
+  <path
+    strokeLinecap='round'
+    strokeLinejoin='round'
+    d='M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99'
+  />
+</svg>;
 
 // web3
-import { useAccount, useNetwork, useContractWrite, usePrepareContractWrite } from 'wagmi';
+import {
+  useAccount,
+  useNetwork,
+  useContractWrite,
+  usePrepareContractWrite,
+} from 'wagmi';
 import { parseEther } from 'viem';
 
 const voteabi = [
@@ -175,10 +194,9 @@ export default function Modal() {
     },
     '43113': {
       name: 'Avalanche',
-      address: '0x1BA76698f2aEA8BB1398d5618C69bCE5639F8909',
+      address: '0x494FEa3d76C4bA2E3A41746bc3c4f2cF791B835d',
     },
   };
-  console.log(votableChains['84531']);
 
   const currentChainId = chain?.id || '84531';
 
@@ -191,29 +209,25 @@ export default function Modal() {
     chainId: chain?.id || 84531,
     address:
       //@ts-ignore
-      votableChains[currentChainId]?.address ||
       '0x494FEa3d76C4bA2E3A41746bc3c4f2cF791B835d',
     abi: voteabi,
     functionName: 'sendVote',
     args: ['ethereum-2', '0xCf3D8765581fD0554Fb8e6993626f08076453Ef7', voteWay],
     value: parseEther('0.5'),
   });
+  console.log(currentChainId);
 
-  const {
-    isLoading,
-    isSuccess,
-    write,
-  } = useContractWrite(prepareVote);
+  const { isLoading, isSuccess, write } = useContractWrite(prepareVote);
 
   const handleYesClick = (e: any) => {
     e.preventDefault();
-    setVoteWay('1')
+    setVoteWay('1');
     write?.();
   };
 
   const handleNoClick = (e: any) => {
     e.preventDefault();
-    setVoteWay('2')
+    setVoteWay('2');
     write?.();
   };
 
@@ -271,30 +285,40 @@ export default function Modal() {
                 <div className='mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3'>
                   <button
                     type='button'
-                    className='inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2'
+                    className={`${
+                      isLoading ? 'bg-indigo-300' : 'bg-indigo-600'
+                    } inline-flex w-full justify-center rounded-md  px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2`}
                     //@ts-ignore
                     onClick={handleYesClick}>
                     Vote that they&apos;ll split
                   </button>
                   <button
                     type='button'
-                    className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0'
+                    className={`${
+                      isLoading ? 'text-gray-500' : 'text-gray-900'
+                    } mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold  shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0`}
                     onClick={handleNoClick}
                     ref={cancelButtonRef}>
+                    {isLoading && (
+                      <span>
+                        {' '}
+                        <ArrowPathIcon className='animate-spin text-indigo-400 h-5 w-5 mr-3' />
+                      </span>
+                    )}
                     Vote that they&apos;ll steal
                   </button>
-                  (
-                  {isLoading && (
-                    <p>
-                      Transaction submitted, please check{' '}
-                      <a
-                        href='https://testnet.axelarscan.io/gmp/search'
-                        className='font-bold text-md text-indigo-600'></a>
-                      AxelarScan!
-                    </p>
-                  )}
-                  )
                 </div>
+                (
+                {isLoading && (
+                  <p className='text-center text-black text-lg'>
+                    Transaction submitted, please check{' '}
+                    <a
+                      href='https://testnet.axelarscan.io/gmp/search'
+                      className='font-bold text-md text-indigo-600'></a>
+                    AxelarScan!
+                  </p>
+                )}
+                )
               </Dialog.Panel>
             </Transition.Child>
           </div>
