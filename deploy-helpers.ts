@@ -3,7 +3,7 @@ import { run } from "hardhat"
 const verify = async (contractAddress: string, args: any[]) => {
   console.log("Verifying contract...")
   try {
-    await run("verify:verify", {
+    await run("verify", {
       address: contractAddress,
       constructorArguments: args,
     })

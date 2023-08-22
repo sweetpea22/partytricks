@@ -3,13 +3,17 @@ import "@nomiclabs/hardhat-ethers"
 import "hardhat-gas-reporter"
 import "dotenv/config"
 import "solidity-coverage"
+import "@nomicfoundation/hardhat-verify"
 import "hardhat-deploy"
 import { HardhatUserConfig } from "hardhat/config"
 
-const SEPOLIA_RPC_URL =
-  process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY"
+const GOERLI_RPC_URL =
+  process.env.GOERLI_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY"
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "privateKey"
 const AVALANCHE_TEST_PRIVATE_KEY = process.env.AVALANCHE_TEST_PRIVATE_KEY || "privateKey"
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
+const SNOWTRACE_API_KEY = process.env.SNOWTRACE_API_KEY || ""
+const BASE_EXPLORER_API_KEY = process.env.BASE_EXPLORER_API_KEY || ""
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -22,10 +26,10 @@ const config: HardhatUserConfig = {
       chainId: 31337,
       allowUnlimitedContractSize: true
     },
-    sepolia: {
-      url: SEPOLIA_RPC_URL,
+    goerli: {
+      url: GOERLI_RPC_URL,
       accounts: [PRIVATE_KEY],
-      chainId: 11155111,
+      chainId: 5,
      },
      avalancheTest: {
       url: 'https://api.avax-test.network/ext/bc/C/rpc',
@@ -43,7 +47,9 @@ const config: HardhatUserConfig = {
       },
     },
   },
-
+  etherscan: {
+    apiKey: { goerli: ETHERSCAN_API_KEY, avalanche: SNOWTRACE_API_KEY, base: BASE_EXPLORER_API_KEY }
+  },
   namedAccounts: {
     deployer: {
       default: 0, // here this will by default take the first account as deployer

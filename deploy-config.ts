@@ -7,7 +7,7 @@ export interface networkConfigInfo {
 export const networkConfig: networkConfigInfo = {
   localhost: {},
   hardhat: {},
-  sepolia: {
+  goerli: {
     blockConfirmations: 6,
   },
   avalanche: { blockConfirmations: 6},
