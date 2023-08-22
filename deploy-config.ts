@@ -10,6 +10,8 @@ export const networkConfig: networkConfigInfo = {
   sepolia: {
     blockConfirmations: 6,
   },
+  avalanche: { blockConfirmations: 6},
+  base: { blockConfirmations: 6 },
 }
 export const developmentChains = ["hardhat", "localhost"]
 
@@ -17,8 +19,8 @@ export const developmentChains = ["hardhat", "localhost"]
 export const governanceTokenAddress = ""
 
 // Governor Values
-export const QUORUM_PERCENTAGE = 100 // Need 4% of voters to pass
-export const MIN_DELAY = 450 // .5hrs 
+export const QUORUM_PERCENTAGE = 50 // Need 4% of voters to pass
+export const MIN_DELAY = 200 // 8minutes  
 
 // export const VOTING_PERIOD = 45818 // 1 week - how long the vote lasts. This is pretty long even for local tests
 export const VOTING_PERIOD = 5 // blocks

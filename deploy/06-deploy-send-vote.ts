@@ -17,6 +17,7 @@ const deploySendVoteCrossChain: DeployFunction = async function (hre: HardhatRun
       gatewayFuji,
       gasServiceFuji
   ]
+  
   log("----------------------------------------------------")
   log("Deploying sendVoteCrossChain and waiting for confirmations...")
   const sendVoteCrossChainGoerli = await deploy("SendVoteCrossChain", {
