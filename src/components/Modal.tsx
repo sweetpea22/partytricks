@@ -171,11 +171,11 @@ export default function Modal() {
   const votableChains = {
     '84531': {
       name: 'base',
-      address: '0x1BA76698f2aEA8BB1398d5618C69bCE5639F8909',
+      address: '0x494FEa3d76C4bA2E3A41746bc3c4f2cF791B835d',
     },
     '43113': {
       name: 'Avalanche',
-      address: '0x494FEa3d76C4bA2E3A41746bc3c4f2cF791B835d',
+      address: '0x1BA76698f2aEA8BB1398d5618C69bCE5639F8909',
     },
   };
   console.log(votableChains['84531']);
