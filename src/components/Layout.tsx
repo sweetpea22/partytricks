@@ -2,41 +2,22 @@ import { Fragment } from 'react';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-};
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 const navigation = [
   { name: 'Home', href: '#', current: true },
-  { name: 'Ongoing Games', href: '#', current: false },
   { name: 'Tournaments', href: '#', current: false },
   { name: 'Create a trick', href: '#', current: false },
 ];
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-];
+
 
 //@ts-ignore
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Layout() {
+export default function Layout({children}: any) {
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div className='min-h-full'>
         <Popover as='header' className='bg-indigo-600 pb-24'>
           {({ open }) => (
@@ -49,8 +30,8 @@ export default function Layout() {
                       <span className='sr-only'>Your Company</span>
                       <img
                         className='h-8 w-auto'
-                        src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300'
-                        alt='Your Company'
+                        src='logo.png'
+                        alt='partytricks'
                       />
                     </a>
                   </div>
@@ -66,41 +47,7 @@ export default function Layout() {
                     </button>
 
                     {/* Profile dropdown */}
-                    <Menu as='div' className='relative ml-4 flex-shrink-0'>
-                      <div>
-                        <Menu.Button className='relative flex rounded-full bg-white text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100'>
-                          <span className='absolute -inset-1.5' />
-                          <span className='sr-only'>Open user menu</span>
-                          <img
-                            className='h-8 w-8 rounded-full'
-                            src={user.imageUrl}
-                            alt=''
-                          />
-                        </Menu.Button>
-                      </div>
-                      <Transition
-                        as={Fragment}
-                        leave='transition ease-in duration-75'
-                        leaveFrom='transform opacity-100 scale-100'
-                        leaveTo='transform opacity-0 scale-95'>
-                        <Menu.Items className='absolute -right-2 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700'
-                                  )}>
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
+                    <ConnectButton />
                   </div>
 
                   {/* Search */}
@@ -221,7 +168,7 @@ export default function Layout() {
                             <div>
                               <img
                                 className='h-8 w-auto'
-                                src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600'
+                                src='/logo.png'
                                 alt='Your Company'
                               />
                             </div>
@@ -245,64 +192,13 @@ export default function Layout() {
                             <a
                               href='#'
                               className='block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800'>
-                              Profile
+                              Tournaments
                             </a>
                             <a
                               href='#'
                               className='block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800'>
-                              Resources
+                              Create a trick
                             </a>
-                            <a
-                              href='#'
-                              className='block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800'>
-                              Company Directory
-                            </a>
-                            <a
-                              href='#'
-                              className='block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800'>
-                              Openings
-                            </a>
-                          </div>
-                        </div>
-                        <div className='pb-2 pt-4'>
-                          <div className='flex items-center px-5'>
-                            <div className='flex-shrink-0'>
-                              <img
-                                className='h-10 w-10 rounded-full'
-                                src={user.imageUrl}
-                                alt=''
-                              />
-                            </div>
-                            <div className='ml-3 min-w-0 flex-1'>
-                              <div className='truncate text-base font-medium text-gray-800'>
-                                {user.name}
-                              </div>
-                              <div className='truncate text-sm font-medium text-gray-500'>
-                                {user.email}
-                              </div>
-                            </div>
-                            <button
-                              type='button'
-                              className='relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
-                              <span className='absolute -inset-1.5' />
-                              <span className='sr-only'>
-                                View notifications
-                              </span>
-                              <BellIcon
-                                className='h-6 w-6'
-                                aria-hidden='true'
-                              />
-                            </button>
-                          </div>
-                          <div className='mt-3 space-y-1 px-2'>
-                            {userNavigation.map((item) => (
-                              <a
-                                key={item.name}
-                                href={item.href}
-                                className='block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800'>
-                                {item.name}
-                              </a>
-                            ))}
                           </div>
                         </div>
                       </div>
@@ -313,50 +209,14 @@ export default function Layout() {
             </>
           )}
         </Popover>
-        <main className='-mt-24 pb-8'>
-          <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
-            <h1 className='sr-only'>Partytricks</h1>
-            {/* Main 3 column grid */}
-            <div className='grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8'>
-              {/* Left column */}
-              <div className='grid grid-cols-1 gap-4 lg:col-span-2'>
-                <section aria-labelledby='section-1-title'>
-                  <h2 className='sr-only' id='section-1-title'>
-                    DAO games, cross-chain.
-                  </h2>
-                  <div className='overflow-hidden rounded-lg bg-white shadow'>
-                    <div className='p-6'>
-                      <h1 className='text-2xl text-black'>Split or Steal?</h1>
-                      <p className='text-xl text-black'>
-                        Will the streamers collaborate? You decide!
-                      </p>
-                    </div>
-                  </div>
-                </section>
-              </div>
 
-              {/* Right column */}
-              <div className='grid grid-cols-1 gap-4'>
-                <section aria-labelledby='section-2-title'>
-                  <h2 className='sr-only' id='section-2-title'>
-                    Section title
-                  </h2>
-                  <div className='overflow-hidden rounded-lg bg-white shadow'>
-                    <div className='p-6'>
-                      <p className='text-black'>Vote here!</p>
-                      <video></video>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
-        </main>
+        {/* main */}
+        <main>{children}</main>
         <footer>
           <div className='mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
             <div className='border-t border-gray-200 py-8 text-center text-sm text-gray-500 sm:text-left'>
               <span className='block sm:inline'>
-                &copy; 2021 Your Company, Inc.
+                &copy; 2021 Partytricks, Inc.
               </span>{' '}
               <span className='block sm:inline'>All rights reserved.</span>
             </div>

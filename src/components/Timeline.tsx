@@ -7,10 +7,10 @@ import {
 const timeline = [
   {
     id: 1,
-    content: 'Applied to',
-    target: 'Front End Developer',
+    content: '0x4fFC...649b joined',
+    target: 'veloDAO Social Bonding Session #002',
     href: '#',
-    date: 'Sep 20',
+    date: '1 hour ago',
     datetime: '2020-09-20',
     icon: UserIcon,
     iconBackground: 'bg-gray-400',
