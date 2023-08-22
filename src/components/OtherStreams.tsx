@@ -18,10 +18,10 @@ const files = [
       'https://images.unsplash.com/photo-1683645480614-55a5957b6343?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
   },
   {
-    title: 'Intramural Chess Tournament',
-    creator: 'FWB',
+    title: 'Split or Steal',
+    creator: 'FriendTech',
     source:
-      'https://images.unsplash.com/photo-1683645480614-55a5957b6343?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      'https://images.unsplash.com/photo-1533237264985-ee62f6d342bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80',
   },
 ];
 

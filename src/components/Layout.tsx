@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
-import { Menu, Popover, Transition } from '@headlessui/react';
+import { Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Tournaments', href: '#', current: false },
-  { name: 'Create a trick', href: '#', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'Tournaments', href: '/stream', current: false },
+  { name: 'Create a trick', href: '/create', current: false },
 ];
 
 

@@ -10,8 +10,8 @@ export const networkConfig: networkConfigInfo = {
   goerli: {
     blockConfirmations: 6,
   },
-  avalanche: { blockConfirmations: 6},
-  base: { blockConfirmations: 6 },
+  avalancheTest: { blockConfirmations: 6},
+  baseGoerli: { blockConfirmations: 6 },
 }
 export const developmentChains = ["hardhat", "localhost"]
 
@@ -43,4 +43,10 @@ export const gasServiceGoerli = "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6"
 
 // ava axelar contract address
 export const gatewayFuji = "0xC249632c2D40b9001FE907806902f63038B737Ab"
-export const gasServiceFuji = "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6"
+export const gasServiceFuji = 
+  "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6"
+
+
+// base axelar contract address
+export const gatewayBase = "0xe432150cce91c13a887f7D836923d5597adD8E31"
+export const gasServiceBase = "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6"

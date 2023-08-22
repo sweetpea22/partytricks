@@ -23,7 +23,7 @@ const Landing: React.FC = () => {
                       Split or Steal: snailDAO
                     </h1>
                     <p className='my-1 italic text-lg text-gray-600'>
-                      Voting period left:
+                      Voting period left: 1400 blocks (30 minutes)
                     </p>
                     <Link
                       href='/stream'

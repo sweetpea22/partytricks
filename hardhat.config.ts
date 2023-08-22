@@ -29,6 +29,7 @@ const config: HardhatUserConfig = {
     goerli: {
       url: GOERLI_RPC_URL,
       accounts: [PRIVATE_KEY],
+      gasPrice: 225000000000,
       chainId: 5,
      },
      avalancheTest: {
@@ -37,6 +38,12 @@ const config: HardhatUserConfig = {
       gasPrice: 225000000000,
       chainId: 43113
     },
+    baseGoerli: {
+      url: 'https://base-goerli.public.blastapi.io',
+      accounts: [PRIVATE_KEY],
+      gasPrice: 225000000000,
+       chainId: 84531,
+     }
   },
   solidity: {
     version: "0.8.9",
