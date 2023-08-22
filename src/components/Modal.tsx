@@ -274,14 +274,14 @@ export default function Modal() {
                     className='inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2'
                     //@ts-ignore
                     onClick={handleYesClick}>
-                    Vote that they'll split
+                    Vote that they&apos;ll split
                   </button>
                   <button
                     type='button'
                     className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0'
                     onClick={handleNoClick}
                     ref={cancelButtonRef}>
-                    Vote that they'll steal
+                    Vote that they&apos;ll steal
                   </button>
                   (
                   {isLoading && (

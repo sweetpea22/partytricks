@@ -18,7 +18,7 @@ export default function Stream() {
 
               <h1 className='py-2 text-xl text-gray-300'>
                 Watch the members of snailDAO compete for a prize in a classic
-                prisoner's dilemma game.
+                prisoners dilemma game.
               </h1>
             </div>
           </header>

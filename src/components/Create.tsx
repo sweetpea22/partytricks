@@ -17,8 +17,8 @@ export default function Create() {
               </h1>
 
               <h1 className='py-2 text-xl text-gray-300'>
-                Deposit the prize and use Partytrick's game rails for payouts
-                and voting.
+                Deposit the prize and use Partytrick`&apos;`s game rails for
+                payouts and voting.
               </h1>
             </div>
           </header>
