@@ -12,6 +12,8 @@ Avalanche Fuji: https://testnet.snowtrace.io/address/0x494FEa3d76C4bA2E3A41746bc
 Base Goerli: https://goerli.basescan.org/address/0x494FEa3d76C4bA2E3A41746bc3c4f2cF791B835d 
 Eth Goerli: https://goerli.etherscan.io/address/0xdc6ffc3f404d9da507735c294f023373079d2b8b
 
+For bounty-specific information, please read through the bounty.md in the root dir. Thank you sponsors!
+
 Potential Next steps: 
 - Network effects: Enable UGC - people can submit their own party tricks and share them with the partytrick community
 - GameFi: Enable secondary markets and betting to be built.
